@@ -1,14 +1,17 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
+app.use(cors());
+app.use(express.json());
 
 app.get("/", function (req, res) {
     res.sendFile("/Users/abhinavsden/Downloads/abhinav_projects/calculator-http-server/index.html");
 })
 
-app.get("/sum/:a/:b", function (req, res) {
-    const a = parseInt(req.params.a);
-    const b = parseInt(req.params.b);
+app.post("/sum/", function (req, res) {
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
 
     const sum = a + b;
 
@@ -16,9 +19,9 @@ app.get("/sum/:a/:b", function (req, res) {
         ans: sum
     })
 })
-app.get("/subtract/:a/:b", function (req, res) {
-    const a = parseInt(req.params.a);
-    const b = parseInt(req.params.b);
+app.post("/subtract/", function (req, res) {
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
 
     const sub = a - b;
 
@@ -26,9 +29,9 @@ app.get("/subtract/:a/:b", function (req, res) {
         ans: sub
     })
 })
-app.get("/multiply/:a/:b", function (req, res) {
-    const a = parseInt(req.params.a);
-    const b = parseInt(req.params.b);
+app.post("/multiply/", function (req, res) {
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
 
     const multiply = a * b;
 
@@ -36,9 +39,9 @@ app.get("/multiply/:a/:b", function (req, res) {
         ans: multiply
     })
 })
-app.get("/divide/:a/:b", function (req, res) {
-    const a = parseInt(req.params.a);
-    const b = parseInt(req.params.b);
+app.post("/divide/", function (req, res) {
+    const a = parseInt(req.body.a);
+    const b = parseInt(req.body.b);
 
     const divide = a / b;
 
