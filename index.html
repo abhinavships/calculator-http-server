@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+         async function add(){
+            const a = document.getElementById("input").value;
+            const b = document.getElementById("input2").value;
+            const response = await fetch('http://localhost:3003/sum/'+a+'/'+b);
+            const data = await response.json();
+            console.log(data.ans);
+            const result = document.createElement("p");
+            result.textContent = "The sum is: " + data.ans;
+            document.getElementById("calculator").appendChild(result);
+        }
+        async function subtract(){
+            const a = document.getElementById("input").value;
+            const b = document.getElementById("input2").value;
+            const response = await fetch('http://localhost:3003/subtract/'+a+'/'+b);
+            const data = await response.json();
+            console.log(data.ans);
+            const result = document.createElement("p");
+            result.textContent = "The difference is: " + data.ans;
+            document.getElementById("calculator").appendChild(result);
+        }
+        async function multiply(){
+            const a = document.getElementById("input").value;
+            const b = document.getElementById("input2").value;      
+            const response = await fetch('http://localhost:3003/multiply/'+a+'/'+b);
+            const data = await response.json();
+            console.log(data.ans);
+            const result = document.createElement("p");
+            result.textContent = "The product is: " + data.ans;
+            document.getElementById("calculator").appendChild(result);
+        }
+        async function divide(){
+            const a = document.getElementById("input").value;
+            const b = document.getElementById("input2").value;
+            const response = await fetch('http://localhost:3003/divide/'+a+'/'+b);
+            const data = await response.json();
+            console.log(data.ans);
+            const result = document.createElement("p");
+            result.textContent = "The quotient is: " + data.ans;
+            document.getElementById("calculator").appendChild(result);
+        }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="input" placeholder="Enter first number">
+        <input type="text" id="input2" placeholder="Enter second number">
+        <button onclick="add()">Add</button>
+        <button onclick="subtract()">Subtract</button>
+        <button onclick="multiply()">Multiply</button>
+        <button onclick="divide()">Divide</button>
+    </div>
+</body>
+</html>
